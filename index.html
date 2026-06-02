@@ -96,15 +96,6 @@
         }
         .nav-links a:hover { color: #fff; }
         .nav-links a:hover::after { width: 100%; }
-        .btn-admin-toggle {
-            background: linear-gradient(135deg, var(--neon2), #7b00ff);
-            color: #fff; border: none; padding: 10px 20px; border-radius: 25px;
-            cursor: pointer; font-weight: 600; font-size: 0.9rem; letter-spacing: 0.3px;
-            transition: var(--transition); box-shadow: 0 4px 15px rgba(180,0,255,0.3);
-            white-space: nowrap;
-        }
-        .btn-admin-toggle:hover { box-shadow: 0 6px 25px rgba(180,0,255,0.5); transform: translateY(-2px); }
-        .btn-admin-toggle.active { background: var(--danger); box-shadow: 0 4px 15px rgba(255,23,68,0.4); }
         .mobile-menu-btn { display: none; background: none; border: none; color: #fff; font-size: 1.8rem; cursor: pointer; }
         .hero {
             position: relative; z-index: 1; min-height: 100vh;
@@ -155,7 +146,6 @@
             -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
         }
         .section-header p { color: var(--text2); font-size: 1rem; }
-        /* Hand-drawn style divider */
         .section-divider {
             width: 80px; height: 12px; margin: 12px auto 0;
             background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 80 12'%3E%3Cpath d='M0,6 Q10,0 20,6 T40,6 T60,6 T80,6' stroke='%2300f0ff' stroke-width='2' fill='none' opacity='0.8'/%3E%3C/svg%3E") no-repeat center;
@@ -173,6 +163,10 @@
         .service-icon {
             font-size: 2.8rem; margin-bottom: 12px; display: block;
             animation: floatIcon 3s ease-in-out infinite;
+            font-weight: 800;
+            color: var(--neon);
+            text-transform: uppercase;
+            letter-spacing: 2px;
         }
         .service-card:nth-child(2) .service-icon { animation-delay: 0.4s; }
         .service-card:nth-child(3) .service-icon { animation-delay: 0.8s; }
@@ -216,6 +210,7 @@
             font-size: 1.3rem; width: 36px; height: 36px;
             background: rgba(0,240,255,0.08); border-radius: 50%;
             display: flex; align-items: center; justify-content: center; flex-shrink: 0;
+            font-weight: bold;
         }
         .order-form {
             background: var(--surface); border: 1px solid var(--border);
@@ -223,7 +218,7 @@
             position: relative;
         }
         .order-form::before {
-            content: '✍️ order form';
+            content: '[ order form ]';
             position: absolute;
             top: -12px;
             right: 20px;
@@ -271,6 +266,16 @@
             font-size: 1.1rem;
         }
         .footer a { color: var(--neon); text-decoration: none; }
+        .footer .admin-link {
+            background: none;
+            border: none;
+            color: var(--text2);
+            cursor: pointer;
+            font-size: 0.8rem;
+            text-decoration: underline;
+            font-family: inherit;
+            margin-left: 15px;
+        }
         .admin-panel {
             display: none; position: relative; z-index: 10; background: var(--surface);
             border-radius: var(--radius); max-width: 1200px; margin: 40px auto;
@@ -348,7 +353,6 @@
                 <li><a href="#services">Services</a></li>
                 <li><a href="#testimonials">Reviews</a></li>
                 <li><a href="#contact">Contact</a></li>
-                <li><button class="btn-admin-toggle" id="btnAdminToggle" onclick="toggleAdminPanel()">Admin Panel</button></li>
             </ul>
             <button class="mobile-menu-btn" onclick="toggleMobileMenu()">&#9776;</button>
         </div>
@@ -372,11 +376,11 @@
                 <div class="section-divider"></div>
             </div>
             <div class="services-grid">
-                <div class="service-card"><span class="service-icon">🎮</span><h3>Buy & Sell</h3><p>Get the best deals on pre-owned and new consoles. Sell yours at top market value.</p></div>
-                <div class="service-card"><span class="service-icon">&#128295;</span><h3>Expert Repairs</h3><p>HDMI, disc drive, overheating, power issues — we fix all consoles with precision.</p></div>
-                <div class="service-card"><span class="service-icon">&#9889;</span><h3>Mods & Customization</h3><p>Custom firmware, shell swaps, LED mods, and performance tuning for your console.</p></div>
-                <div class="service-card"><span class="service-icon">&#128200;</span><h3>Upgrades</h3><p>SSD upgrades, thermal paste replacement, RAM expansions — boost your gaming.</p></div>
-                <div class="service-card"><span class="service-icon">&#127919;</span><h3>Trade-Ins</h3><p>Trade your old console for credit toward a newer model. Fair valuations guaranteed.</p></div>
+                <div class="service-card"><span class="service-icon">BUY</span><h3>Buy & Sell</h3><p>Get the best deals on pre-owned and new consoles. Sell yours at top market value.</p></div>
+                <div class="service-card"><span class="service-icon">REPAIR</span><h3>Expert Repairs</h3><p>HDMI, disc drive, overheating, power issues — we fix all consoles with precision.</p></div>
+                <div class="service-card"><span class="service-icon">MOD</span><h3>Mods & Customization</h3><p>Custom firmware, shell swaps, LED mods, and performance tuning for your console.</p></div>
+                <div class="service-card"><span class="service-icon">UPGRADE</span><h3>Upgrades</h3><p>SSD upgrades, thermal paste replacement, RAM expansions — boost your gaming.</p></div>
+                <div class="service-card"><span class="service-icon">TRADE</span><h3>Trade-Ins</h3><p>Trade your old console for credit toward a newer model. Fair valuations guaranteed.</p></div>
             </div>
         </div>
     </section>
@@ -416,9 +420,10 @@
             <div class="contact-wrapper">
                 <div class="contact-info">
                     <h3>GEXC - Game Express Chennai</h3>
-                    <div class="info-item"><div class="info-icon">&#128222;</div><strong>8124999955</strong></div>
-                    <div class="info-item"><div class="info-icon">&#127968;</div>Chennai, Tamil Nadu</div>
-                    <div class="info-item"><div class="info-icon">&#128100;</div>Owner: <strong>Raj</strong> - chill, honest, expert</div>
+                    <div class="info-item"><div class="info-icon">&#9742;</div><strong>8124999955</strong></div>
+                    <div class="info-item"><div class="info-icon">&#9962;</div>Chennai, Tamil Nadu</div>
+                    <div class="info-item"><div class="info-icon">&#9786;</div>Owner: <strong>Raj</strong> - chill, honest, expert</div>
+                    <div class="info-item"><div class="info-icon">&#9829;</div>Reddit: <a href="https://www.reddit.com/user/FixwithRaj/" target="_blank" style="color:var(--neon);">u/FixwithRaj</a></div>
                     <div style="margin-top:20px; padding:12px; background:rgba(0,240,255,0.05); border-radius:8px;">
                         <p style="font-size:0.9rem;">We handle almost every console: PlayStation 3/4/5, Xbox 360/One/Series, Nintendo Switch, retro consoles, and more.</p>
                     </div>
@@ -426,11 +431,15 @@
                 <div class="order-form" id="orderFormContainer">
                     <h3>Place Your Order</h3>
                     <form id="orderForm" onsubmit="handleOrderSubmit(event)">
-                        <div class="form-group"><label>Your Name</label><input type="text" id="customerName" required placeholder="Full name"></div>
-                        <div class="form-group"><label>Phone Number</label><input type="tel" id="customerPhone" required placeholder="e.g., 8124999955"></div>
+                        <!-- Web3Forms hidden fields -->
+                        <input type="hidden" name="access_key" value="YOUR_WEB3FORMS_ACCESS_KEY" id="web3formsKey">
+                        <input type="hidden" name="subject" value="New Order from GEXC Website">
+                        <input type="hidden" name="from_name" value="GEXC Website">
+                        <div class="form-group"><label>Your Name</label><input type="text" name="name" id="customerName" required placeholder="Full name"></div>
+                        <div class="form-group"><label>Phone Number</label><input type="tel" name="phone" id="customerPhone" required placeholder="e.g., 8124999955"></div>
                         <div class="form-group">
                             <label>Console</label>
-                            <select id="consoleType" required>
+                            <select name="console" id="consoleType" required>
                                 <option value="">Select console</option>
                                 <option value="PS5">PS5</option>
                                 <option value="Xbox Series X">Xbox Series X</option>
@@ -441,7 +450,7 @@
                                 <option value="Other">Other</option>
                             </select>
                         </div>
-                        <div class="form-group"><label>Issue / Details</label><textarea id="issueDetails" required placeholder="Describe what you need (repair, mod, upgrade, trade-in...)"></textarea></div>
+                        <div class="form-group"><label>Issue / Details</label><textarea name="message" id="issueDetails" required placeholder="Describe what you need (repair, mod, upgrade, trade-in...)"></textarea></div>
                         <button type="submit" class="btn-submit">Submit Order</button>
                     </form>
                     <div class="form-success" id="formSuccess">Order submitted successfully! Raj will contact you soon.</div>
@@ -470,6 +479,7 @@
     </div>
     <footer class="footer">
         <p>&copy; 2025 GEXC - Game Express Chennai. All rights reserved. | <a href="tel:+918124999955">8124999955</a></p>
+        <button class="admin-link" onclick="toggleAdminPanel()" title="Admin access">Manage</button>
     </footer>
     <script>
         (function() {
@@ -510,24 +520,41 @@
         function toggleMobileMenu() { document.getElementById('navLinks').classList.toggle('open'); }
         function toggleAdminPanel() {
             const panel = document.getElementById('adminPanel');
-            const btn = document.getElementById('btnAdminToggle');
             panel.classList.toggle('visible');
-            btn.classList.toggle('active');
             if (panel.classList.contains('visible')) renderAdminOrders();
         }
         function getOrders() { return JSON.parse(localStorage.getItem('gexc_orders') || '[]'); }
         function saveOrders(orders) { localStorage.setItem('gexc_orders', JSON.stringify(orders)); }
-        function handleOrderSubmit(e) {
+        async function handleOrderSubmit(e) {
             e.preventDefault();
+            const form = document.getElementById('orderForm');
             const name = document.getElementById('customerName').value.trim();
             const phone = document.getElementById('customerPhone').value.trim();
             const consoleType = document.getElementById('consoleType').value;
             const issue = document.getElementById('issueDetails').value.trim();
             if (!name || !phone || !consoleType || !issue) return;
+
+            // Web3Forms submission
+            const accessKey = document.getElementById('web3formsKey').value;
+            if (accessKey && accessKey !== 'YOUR_WEB3FORMS_ACCESS_KEY') {
+                try {
+                    const formData = new FormData(form);
+                    const response = await fetch('https://api.web3forms.com/submit', {
+                        method: 'POST',
+                        body: formData
+                    });
+                    const result = await response.json();
+                    if (!result.success) throw new Error('Web3Forms error');
+                } catch (err) {
+                    console.warn('Web3Forms submission failed, but order saved locally.', err);
+                }
+            }
+
+            // Save locally regardless
             const orders = getOrders();
             orders.push({ id: Date.now(), name, phone, console: consoleType, issue, status: 'Pending', date: new Date().toISOString() });
             saveOrders(orders);
-            document.getElementById('orderForm').reset();
+            form.reset();
             document.getElementById('formSuccess').style.display = 'block';
             setTimeout(() => { document.getElementById('formSuccess').style.display = 'none'; }, 3000);
             showToast('Order placed successfully!');
