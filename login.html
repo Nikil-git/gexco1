@@ -24,75 +24,30 @@
             color: var(--text);
             font-family: 'Poppins', sans-serif;
             display: flex; align-items: center; justify-content: center;
-            min-height: 100vh;
-            margin: 0;
+            min-height: 100vh; margin: 0;
             background-image: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.03'/%3E%3C/svg%3E");
         }
         .login-card {
-            background: var(--surface);
-            border: 1px solid var(--border);
-            border-radius: 16px;
-            padding: 40px 32px;
-            width: 380px;
-            max-width: 90%;
+            background: var(--surface); border: 1px solid var(--border);
+            border-radius: 16px; padding: 40px 32px; width: 380px; max-width: 90%;
             box-shadow: 0 0 40px rgba(180,0,255,0.2), 0 20px 50px rgba(0,0,0,0.6);
-            text-align: center;
-            position: relative;
+            text-align: center; position: relative;
         }
         .login-card::before {
-            content: 'admin only';
-            position: absolute;
-            top: -12px;
-            right: 20px;
-            background: var(--surface);
-            padding: 2px 15px;
-            font-family: var(--handwritten);
-            font-size: 1rem;
-            color: var(--neon);
-            border-radius: 20px;
-            transform: rotate(2deg);
+            content: 'admin only'; position: absolute; top: -12px; right: 20px;
+            background: var(--surface); padding: 2px 15px;
+            font-family: var(--handwritten); font-size: 1rem;
+            color: var(--neon); border-radius: 20px; transform: rotate(2deg);
         }
-        .logo {
-            font-size: 2.8rem;
-            font-weight: 900;
-            background: linear-gradient(135deg, var(--neon), var(--neon2));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            margin-bottom: 20px;
-            letter-spacing: -1px;
-        }
+        .logo { font-size: 2.8rem; font-weight: 900; background: linear-gradient(135deg, var(--neon), var(--neon2)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; margin-bottom: 20px; }
         .form-group { margin-bottom: 18px; text-align: left; }
         .form-group label { display: block; font-weight: 600; margin-bottom: 6px; font-size: 0.9rem; color: #ccc; }
-        .form-group input {
-            width: 100%; padding: 12px 16px;
-            background: #1a1a28; border: 1px solid var(--border);
-            border-radius: 8px; color: #fff; font-size: 0.95rem;
-            font-family: inherit; outline: none; transition: border 0.3s;
-        }
+        .form-group input { width: 100%; padding: 12px 16px; background: #1a1a28; border: 1px solid var(--border); border-radius: 8px; color: #fff; font-size: 0.95rem; font-family: inherit; outline: none; transition: border 0.3s; }
         .form-group input:focus { border-color: var(--neon); box-shadow: 0 0 15px rgba(0,240,255,0.15); }
-        .btn-login {
-            width: 100%; padding: 14px;
-            background: linear-gradient(135deg, var(--neon), #00b8d4);
-            border: none; border-radius: 30px; cursor: pointer;
-            font-weight: 700; font-size: 1.1rem; color: #000;
-            letter-spacing: 0.3px; transition: 0.3s;
-            box-shadow: 0 0 20px rgba(0,240,255,0.3);
-            margin-top: 10px;
-            font-family: var(--handwritten);
-            font-size: 1.5rem;
-        }
+        .btn-login { width: 100%; padding: 14px; background: linear-gradient(135deg, var(--neon), #00b8d4); border: none; border-radius: 30px; cursor: pointer; font-weight: 700; font-size: 1.1rem; color: #000; transition: 0.3s; box-shadow: 0 0 20px rgba(0,240,255,0.3); margin-top: 10px; font-family: var(--handwritten); font-size: 1.5rem; }
         .btn-login:hover { transform: translateY(-2px); box-shadow: 0 0 40px rgba(0,240,255,0.5); }
-        .error-message {
-            color: var(--danger);
-            font-size: 0.85rem;
-            margin-top: 12px;
-            display: none;
-        }
-        .back-link {
-            display: block; margin-top: 20px; color: var(--text2);
-            font-size: 0.85rem; text-decoration: underline; cursor: pointer;
-        }
+        .error-message { color: var(--danger); font-size: 0.85rem; margin-top: 12px; display: none; }
+        .back-link { display: block; margin-top: 20px; color: var(--text2); font-size: 0.85rem; text-decoration: underline; cursor: pointer; }
     </style>
 </head>
 <body>
@@ -100,39 +55,27 @@
         <div class="logo">GEXC</div>
         <h2 style="margin-bottom:20px; font-weight:700;">Admin Login</h2>
         <form id="loginForm" onsubmit="handleLogin(event)">
-            <div class="form-group">
-                <label>Username</label>
-                <input type="text" id="username" required placeholder="Enter username">
-            </div>
-            <div class="form-group">
-                <label>Password</label>
-                <input type="password" id="password" required placeholder="Enter password">
-            </div>
+            <div class="form-group"><label>Username</label><input type="text" id="username" required placeholder="Enter username"></div>
+            <div class="form-group"><label>Password</label><input type="password" id="password" required placeholder="Enter password"></div>
             <button type="submit" class="btn-login">Sign In</button>
         </form>
         <div class="error-message" id="loginError">Invalid username or password.</div>
         <a href="index.html" class="back-link">← Back to site</a>
     </div>
-
     <script>
-        // Hardcoded credentials - replace with your own if needed
         const VALID_USERNAME = "FixwithRaj";
-        const VALID_PASSWORD = "RajAdmin@4414";
+        const VALID_PASSWORD = "Raj@4414";
 
         function handleLogin(e) {
             e.preventDefault();
             const user = document.getElementById('username').value.trim();
             const pass = document.getElementById('password').value.trim();
             const errorEl = document.getElementById('loginError');
-
             if (user === VALID_USERNAME && pass === VALID_PASSWORD) {
-                // Set login token in sessionStorage (lasts for browser session)
                 sessionStorage.setItem('gexc_admin_logged_in', 'true');
-                // Redirect to main site with admin flag
                 window.location.href = 'index.html?admin=1';
             } else {
                 errorEl.style.display = 'block';
-                // Clear password field for security
                 document.getElementById('password').value = '';
             }
         }
